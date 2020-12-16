@@ -88,6 +88,29 @@ public abstract class Exhibit {
     }
 
 
+    /** Set an exhibit`s year of creation comparing to authors` years of life.
+     * @param creationYear exhibit`s year of creation
+     */
+    public void changeCreationYear(int creationYear) throws YearValidationException{
+        int born_year = author.getBorn_year();
+        int death_year = author.getDeath_year();
+
+        if(creationYear > born_year) {
+            if(death_year != 0) {
+                if(creationYear < death_year){
+                    this.creationYear = creationYear;
+                    return;
+                }
+            }
+            else {
+                this.creationYear = creationYear;
+                return;
+            }
+        }
+        throw new YearValidationException("Incorrect creation year. Automatically set to current year: " +
+                Calendar.getInstance().get(Calendar.YEAR) + ".");
+    }
+
     /** Get a description plate.
      * @return description plateo object.
      */

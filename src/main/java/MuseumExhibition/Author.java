@@ -124,6 +124,15 @@ public class Author implements Person {
      * @return authors` initials
      */
     public String getInitials() {
-        return name.substring(0, 1).toUpperCase() + ". " + surname.substring(0, 1).toUpperCase() + ".";
+        String temp_surname;
+        if (surname.split(" ").length > 1) {
+            temp_surname = surname.split(" ")[1];
+
+        }
+        else {
+            temp_surname  = surname.split(" ")[0];
+        }
+
+        return name.substring(0, 1).toUpperCase() + ". " + temp_surname.substring(0, 1).toUpperCase() + ".";
     }
 }
