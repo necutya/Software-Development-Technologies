@@ -1,12 +1,14 @@
 package MuseumExhibition;
-
+import java.util.ArrayList;
 import java.util.Calendar;
+import java.util.List;
 
 public abstract class Exhibit {
 
     private String name;
     private Author author;
     private int creationYear;
+    private ArrayList<Integer> marks;
     private DescriptionPlate descriptionPlate;
 
     /** Creates an exhibit with specified name, author, creationYear.
@@ -28,6 +30,7 @@ public abstract class Exhibit {
         this.descriptionPlate = new DescriptionPlate(
                 this.author + " - \"" + this.name + "\" (" + this.getCreationYear() + ")"
         );
+        this.marks = new ArrayList<Integer>();
     }
 
     /** Get an exhibit`s name.
@@ -87,6 +90,13 @@ public abstract class Exhibit {
                 Calendar.getInstance().get(Calendar.YEAR) + ".");
     }
 
+    public void addMark(int mark) {
+        marks.add(mark);
+    }
+
+    public ArrayList<Integer> getMarkList() {
+        return marks;
+    }
 
     /** Get a description plate.
      * @return description plateo object.
